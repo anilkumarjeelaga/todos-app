@@ -1,0 +1,40 @@
+<header class="fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>
+                            <a [routerLink]="['/todos']">TODOS APP</a>
+                        </h3>
+                    </div>
+                    <div class="col-lg-6 top-nav">
+                        <nav>
+                            <ul class="nav nav-pills float-right" *ngIf="!isAddEditTodo">
+                                <li class="nav-item">
+                                    <a class="nav-link active" [routerLink]="['/todo/0']">Add Todo </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" [routerLink]="['/template-todo/0']">T - Add Todo </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </header>
+  
+  <main role="main" class="container">
+    <router-outlet></router-outlet>
+  </main>
+  
+  <footer class="fixed-bottom">
+    <div class="container">
+        <p>Developed with &hearts; on Angular. By <a target="_blank" href="https://twitter.com/nagarjun_immadi">@nagarjun_immadi</a>. Github <a href="https://github.com/nagarjuna-immadi/todos-app" target="_blank">Repo</a></p>
+    </div>
+  </footer>
+
+
+  

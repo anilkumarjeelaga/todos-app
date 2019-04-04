@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-12">
+    <ngb-alert *ngIf="successMessage" type="success" [dismissible]="true" (close)='successMessage=""'>{{ successMessage }}</ngb-alert>
+  </div>
+</div>
+<input type="text" id="search-box" class="form-control search-box" placeholder="Search todos..."/>
+<ul class="list-group list-group-flush todo-list" *ngIf="!isLoading">
+  <li class="list-group-item" *ngFor="let todo of todos">
+    <span class="align-left" [ngClass]="{'compleated': todo.isCompleted}">{{ todo.title }}</span>
+    <span class="badge badge-primary badge-pill">
+      <span *ngFor="let tag of todo.tags; let i=index;">{{ tag.name }}<span *ngIf="i < todo.tags.length-1">, </span></span>
+    </span>
+    <span class="badge badge-primary badge-pill">{{ todo.category.name }}</span>
+    <span class="badge badge-primary badge-pill">{{ todo.targetDate | date}}</span>
+    <span><a [routerLink]="['/todo', todo._id]">Edit</a></span>
+    <span><a [routerLink]="['/template-todo', todo._id]">T-Edit</a></span>
+    <span class="text-danger delete-btn" (click)="confirmDelete(todo)">Delete</span>
+  </li>
+</ul>
+<div class="text-center" *ngIf="isLoading">
+  <img src="../../../assets/img/loader.gif" />
+</div>

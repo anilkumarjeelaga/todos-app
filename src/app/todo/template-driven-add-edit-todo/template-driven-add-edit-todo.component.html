@@ -1,0 +1,98 @@
+<div class="row" *ngIf="!isFormLoading">
+  <div class="col-12">
+    <form (ngSubmit)="saveTodo(todoForm)" #todoForm="ngForm" class="todos-form">
+      
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          <input class="form-control" name="title" [(ngModel)]="todo.title" #title="ngModel" required minlength="5">
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+            <div *ngIf="title.errors.required">
+              Title is required.
+            </div>
+            <div *ngIf="title.errors.minlength">
+              Title must be at least 5 characters long.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Is Completed</label>
+        <div class="col-sm-10 align-inline-items">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="isCompleted" [(ngModel)]="todo.isCompleted" [value]="true">
+            <label class="form-check-label">Yes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="isCompleted" [(ngModel)]="todo.isCompleted" [value]="false">
+            <label class="form-check-label">No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Target Date</label>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="targetDate" [(ngModel)]="todo.targetDate" #targetDate="ngModel" ngbDatepicker #date="ngbDatepicker">
+            <div class="input-group-append" (click)="date.toggle()">
+              <button class="btn btn-outline-secondary" type="button"><i class="far fa-calendar-alt"></i></button>
+            </div>
+          </div>
+          <div *ngIf="targetDate.invalid && (targetDate.dirty || targetDate.touched)" class="alert alert-danger">
+            <div *ngIf="targetDate.errors.required">
+              Target Date is required.
+            </div>
+            <div *ngIf="targetDate.errors.ngbDate">
+              Please select a valid date.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Tags</label>
+        <div class="col-sm-10 align-inline-items">
+          <div class="form-check form-check-inline" *ngFor="let tag of tags">
+            <input class="form-check-input" type="checkbox" name="tags" [value]="tag.selected" [checked]="tag.selected" (change)="updateTagOnChange(tag, $event)"/>
+            <label class="form-check-label">{{ tag.name }}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-10">
+          <select class="form-control" name="category" [(ngModel)]="todo.category" #category="ngModel" required>
+            <option value="">Select Category</option>
+            <option *ngFor="let c of categories" [value]="c._id">{{ c.name }}</option>
+          </select>
+          <div *ngIf="category.invalid && (category.dirty || category.touched)" class="alert alert-danger">
+            <div *ngIf="category.errors.required">
+              Category is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <ngb-alert *ngIf="errorMessage" type="danger" [dismissible]="true" (close)='errorMessage=""'>{{ errorMessage }}</ngb-alert>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10 align-right">
+          <button class="btn btn-default" (click)='cancle($event)'>cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="!todoForm.valid">{{ isEdit ? 'Update' : 'Save' }} Todo</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<div class="text-center" *ngIf="isFormLoading">
+  <img src="../../../assets/img/loader.gif" />
+</div>

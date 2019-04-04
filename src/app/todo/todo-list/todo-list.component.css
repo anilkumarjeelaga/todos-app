@@ -1,0 +1,30 @@
+.todo-list {
+    margin-bottom: 70px;
+}
+.todo-list .list-group-item {
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.todo-list .list-group-item:first-child {
+    border-top: 0px;
+}
+.todo-list .list-group-item a {
+    text-decoration: none;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.todo-list .list-group-item .badge-pill {
+    margin-left: 5px;
+}
+.todo-list .list-group-item .badge-danger a {
+    color: #ffffff;
+    padding-left: 0px;
+}
+.compleated {
+    text-decoration: line-through;
+}
+.todo-list .list-group-item .align-left {
+    float: left;
+    text-align: left;
+}
