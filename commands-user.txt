@@ -1,0 +1,16 @@
+Run app in local:
+----------------
+> ng serve --open
+
+Run app with qa configuration:
+------------------------------
+> ng serve --configuration=qa --open 
+> ng build --configuration=qa
+
+Run app with production configuration:
+--------------------------------------
+> ng serve --configuration=production --open
+> ng build --configuration=production
+-------- OR -----
+> ng serve --prod --open
+> ng build --prod
