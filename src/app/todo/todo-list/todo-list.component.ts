@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
     let searchBox = document.getElementById('search-box');
     this.search$ = fromEvent(searchBox, 'input').pipe(
       map((event: KeyboardEvent) => {
-        // return (<HTMLInputElement>event.target).value;
+        // return event.target.value; // We will get compilation error.
         return (<HTMLInputElement>event.target).value;
         // return event.target['value']; // We can do like this also to avoid TS compilation errors.
       }),

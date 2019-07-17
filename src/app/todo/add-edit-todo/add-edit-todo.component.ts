@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { ITodo } from '../../shared/interfaces/todo';
 import { ICategory } from '../../shared/interfaces/category';
@@ -7,7 +7,6 @@ import { ITag } from '../../shared/interfaces/tag';
 import { TodoService } from '../todo.service';
 import { forkJoin, Observable } from 'rxjs';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-todo',

@@ -133,7 +133,7 @@ export class TemplateDrivenAddEditTodoComponent implements OnInit {
   saveTodo(todoForm) {
     if(todoForm.valid) {
       let payload = this.formatPayload(todoForm.value);
-      console.log(payload      );
+      console.log(payload);
       if(this.isEdit) {
         payload.id = this.todo._id;
         this.todoService.updateTodo(payload)

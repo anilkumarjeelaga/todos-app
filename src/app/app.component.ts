@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe(
       event => {
         if(event instanceof ActivationEnd) {
+          console.log(event);
           let path = event.snapshot.routeConfig.path;
           if(path === 'todo/:id' || path === 'template-todo/:id') {
             this.isAddEditTodo = true;
