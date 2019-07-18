@@ -82,8 +82,8 @@ export class AddEditTodoComponent implements OnInit {
         this.buildTagControls();
         if(this.isEdit) {
           this.formatTodo(todo as ITodo);
-          this.updateTagControls(todo.tags);
           this.todoForm.patchValue(this.todo);
+          this.updateTagControls(todo.tags);
         }
       },
       error => {
@@ -97,7 +97,7 @@ export class AddEditTodoComponent implements OnInit {
     if(this.tags.length) {
       for(let tag of this.tags) {
         tag.selected = false;
-        let tagControl = new FormControl(tag.selected)
+        let tagControl = new FormControl(tag.selected);
         this.tagsControls.push(tagControl);
       }
     }
