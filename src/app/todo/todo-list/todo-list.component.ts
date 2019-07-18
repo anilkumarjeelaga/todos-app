@@ -66,9 +66,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
     deleteModalReference.componentInstance.todo = todo;
     deleteModalReference.result.then((result) => {
+      console.log(result);
       this.loadTodos();
       this.successMessage = 'Todo deleted successfully';
     }, (reason) => {
+      console.log(reason);
       console.log('Modal dismissed');
     });
   }

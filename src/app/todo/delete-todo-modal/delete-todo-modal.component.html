@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title">Delete Todo</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('clicked on cross button')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -15,5 +15,5 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-danger" (click)="performDelete()">YES</button>
-  <button type="button" class="btn btn-success" (click)="activeModal.dismiss()">NO</button>
+  <button type="button" class="btn btn-success" (click)="activeModal.dismiss('No button clicked')">NO</button>
 </div>
