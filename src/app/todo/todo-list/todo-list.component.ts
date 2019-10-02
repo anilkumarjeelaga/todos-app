@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { ITodo } from '../../shared/interfaces/todo';
 import { fromEvent, Observable } from 'rxjs';
-import { map, debounceTime, switchMap } from 'rxjs/operators';
+import { map, debounceTime, switchMap, tap } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteTodoModalComponent } from '../delete-todo-modal/delete-todo-modal.component';
 
@@ -28,11 +28,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
     /** Search todo feature */
     let searchBox = document.getElementById('search-box');
     this.search$ = fromEvent(searchBox, 'input').pipe(
+      tap(event => console.log(event)),
       map((event: KeyboardEvent) => {
         // return event.target.value; // We will get compilation error.
         return (<HTMLInputElement>event.target).value;
         // return event.target['value']; // We can do like this also to avoid TS compilation errors.
       }),
+      tap(value => console.log(value)),
       debounceTime(250),
       switchMap(text => {
         this.isLoading = true;

@@ -14,3 +14,7 @@ Run app with production configuration:
 -------- OR -----
 > ng serve --prod --open
 > ng build --prod
+
+Swagger:
+--------
+https://todos-api-dev.herokuapp.com/api-docs/
