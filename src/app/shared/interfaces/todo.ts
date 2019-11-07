@@ -6,6 +6,6 @@ export interface ITodo {
     title: string,
     isCompleted: boolean,
     targetDate: string,
-    tags: ITag[];
+    tags: ITag[],
     category: ICategory
 }
